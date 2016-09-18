@@ -64,17 +64,4 @@
 	</package>
 
 
-
-	<!-- <package name="default" namespace="/" extends="struts-default"> 配置一个默认的action 
-		当搜索不到指定action时就访问该action <default-action-ref name="error"></default-action-ref> 
-		<action name="error"> <result> /error.jsp </result> </action> 配置action <action 
-		name="LoginAction_*" method="{1}" class="com.ruicai.action.LoginAction"> 
-		<result>/main.jsp</result> <result name="input">/login.jsp</result> <result 
-		name="main">/{1}.jsp</result> <result name="test">/{1}.jsp</result> </action> 
-		</package> -->
-
-
-
-
-
 </struts>

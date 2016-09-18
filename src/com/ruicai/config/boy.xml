@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boy">
+
+	<!-- parameterType="int" resultType="com.ruicai.entity.Boy" -->
+
+	<select id="selectAllBoy" resultType="com.ruicai.entity.Boy">
+		select * from t_boy
+	</select>
+
+	<select id="getBoyByCondition" parameterType="com.ruicai.entity.Boy"
+		resultType="com.ruicai.entity.Boy">
+		select * from t_boy
+		<where>
+
+			<if test="name!=null and name!='' ">
+				and name=#{name}
+			</if>
+
+			<if test="address!=null and address!='' ">
+				and address=#{address}
+			</if>
+
+		</where>
+
+	</select>
+
+	<insert id="addBoy" parameterType="com.ruicai.entity.Boy">
+		insert
+		into t_boy
+		(id,name,birth,address,favor) values
+		(#{id},#{name},#{birth},#{address},#{favor})
+	</insert>
+
+	<delete id="deleteBoy" parameterType="com.ruicai.entity.Boy">
+		delete from t_boy where
+		name=#{name}
+	</delete>
+
+	<update id="updateBoy" parameterType="com.ruicai.entity.Boy">
+		update t_boy set
+		address=#{address} where name=#{name}
+	</update>
+</mapper>
