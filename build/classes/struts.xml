@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.i18n.encoding" value="utf-8" />
+
+
+
+	<package name="default" namespace="/" extends="struts-default">
+
+		<default-action-ref name="error"></default-action-ref>
+		<action name="error">
+			<result>
+				/error.jsp
+			</result>
+		</action>
+
+		<action name="LoginAction_*" method="{1}"
+			class="com.ruicai.action.LoginAction">
+			<result>/login.jsp</result>
+			<result name="validate">/login.jsp</result>
+			<result name="main">/main.jsp</result>
+		</action>
+		
+		<action name="ActivityAction_*" method="{1}"
+			class="com.ruicai.action.ActivityAction">
+			<result name="main">/main.jsp</result>
+		</action>
+		
+	</package>
+
+
+	<!-- 配置后缀名 -->
+	<!-- <constant name="struts.action.extension" value="html"></constant> -->
+
+
+
+	<!-- 配置ajax action -->
+	<package name="json" namespace="/" extends="json-default">
+		<action name="jsonAjax" class="com.ruicai.action.JsonAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<action name="activityAjax" class="com.ruicai.action.AtivityAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+			<action name="activityAjaxCai" class="com.ruicai.action.AtivityCaiAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+	</package>
+
+
+
+	<!-- <package name="default" namespace="/" extends="struts-default"> 配置一个默认的action 
+		当搜索不到指定action时就访问该action <default-action-ref name="error"></default-action-ref> 
+		<action name="error"> <result> /error.jsp </result> </action> 配置action <action 
+		name="LoginAction_*" method="{1}" class="com.ruicai.action.LoginAction"> 
+		<result>/main.jsp</result> <result name="input">/login.jsp</result> <result 
+		name="main">/{1}.jsp</result> <result name="test">/{1}.jsp</result> </action> 
+		</package> -->
+
+
+
+
+
+</struts>
